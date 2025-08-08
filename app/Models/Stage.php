@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lawyer extends Model
+class Stage extends Model
 {
     use HasFactory;
     protected $perpage = 5;
 
-    protected $fillable =['name', 'age', 'gender',
-    'identification_card', 'phone_number', 'email',
-    'professional_code', 'place_birth', 'department',
-    'country', 'marital_status'];
+    protected $fillable =['document_type',
+    'description', 'case_date'];
 
     public function legalcase(){
         return $this->hasMany(LegalCase::class);

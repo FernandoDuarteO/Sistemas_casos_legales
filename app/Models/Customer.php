@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Judge extends Model
+class Customer extends Model
 {
     use HasFactory;
     protected $perpage = 5;
 
     protected $fillable =['name', 'age', 'gender',
-    'identification_card', 'phone_number', 'email',
-    'place_birth', 'department', 'residence', 'country',
-    'marital_Status'];
+    'address', 'identification_card', 'phone_number',
+    'place_birth', 'departments', 'country',
+    'marital_status'];
 
-    public function hall(){
-        return $this->hasMany(Hall::class);
+    public function legalcase(){
+        return $this->hasMany(LegalCase::class);
     }
 }
