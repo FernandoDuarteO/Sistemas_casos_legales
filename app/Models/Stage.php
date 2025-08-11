@@ -11,7 +11,7 @@ class Stage extends Model
     protected $perpage = 5;
 
     protected $fillable =['document_type',
-    'description', 'case_date'];
+    'description', 'file', 'case_date'];
 
     public function legalcase(){
         return $this->hasMany(LegalCase::class);

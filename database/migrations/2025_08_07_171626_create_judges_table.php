@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('age', 3);
             $table->string('gender', 10);
             $table->string('identification_card', 20)->unique();
-            $table->string('phone_number', 15);
+            $table->string('phone_number', 15)->unique();
             $table->string('email')->unique();
             $table->string('place_birth');
             $table->string('department');

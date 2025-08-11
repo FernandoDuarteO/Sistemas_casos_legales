@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('legal_cases', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('number_file');
+            $table->string('number_file')->unique();
             $table->string('type_case');
             $table->datetime('opening_date');
             $table->string('current_status');
