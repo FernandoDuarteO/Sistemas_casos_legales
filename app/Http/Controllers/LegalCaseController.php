@@ -19,8 +19,8 @@ class LegalCaseController extends Controller
      */
     public function index()
     {
-        $legal_cases = Legal_Case::with('legal_case','audience', 'hall', 'stage', 'customer', 'lawyer')->paginate(5);
-        return view('audiences.index', compact('audiences'));
+        $legalCases = LegalCase::with('legalCases','audience', 'hall', 'stage', 'customer', 'lawyer')->paginate(5);
+        return view('legalCases.index', compact('legalCases'));
     }
 
     /**
@@ -28,13 +28,13 @@ class LegalCaseController extends Controller
      */
     public function create()
     {
-        $legal_cases = new Legal_Case();
+        $legalCases = new LegalCase();
         $audiences = Audience::all();
         $halls = Hall::all();
         $stages = Stage::all();
         $customers = Customer::all();
         $lawyers = Lawyer::all();
-        return view('legal_cases.create', compact('legal_cases', 'audiences', 'halls', 'stages', 'customers', 'lawyers'));
+        return view('legalCases.create', compact('legalCases', 'audiences', 'halls', 'stages', 'customers', 'lawyers'));
     }
 
     /**
@@ -42,8 +42,8 @@ class LegalCaseController extends Controller
      */
     public function store(LegalCaseRequest $request)
     {
-        Legal_Case::create($request->validated());
-        return redirect()->route('legal_cases.index')->with('success', 'Caso Legal creada con éxito.');
+        LegalCase::create($request->validated());
+        return redirect()->route('legalCases.index')->with('success', 'Caso Legal creada con éxito.');
     }
 
     /**
@@ -51,13 +51,13 @@ class LegalCaseController extends Controller
      */
     public function show(int $id)
     {
-        $legal_cases = Legal_Case::find($id);
+        $legalCases = LegalCase::find($id);
         $audiences = Audience::all();
         $halls = Hall::all();
         $stages = Stage::all();
         $customers = Customer::all();
         $lawyers = Lawyer::all();
-        return view('legal_cases.show', compact('legal_cases', 'audiences', 'halls', 'stages', 'customers', 'lawyers'));
+        return view('legalCases.show', compact('legalCases', 'audiences', 'halls', 'stages', 'customers', 'lawyers'));
     }
 
     /**
@@ -65,13 +65,13 @@ class LegalCaseController extends Controller
      */
     public function edit(int $id)
     {
-        $legal_cases = Legal_Case::find($id);
+        $legalCases = LegalCase::find($id);
         $audiences = Audience::all();
         $halls = Hall::all();
         $stages = Stage::all();
         $customers = Customer::all();
         $lawyers = Lawyer::all();
-        return view('legal_cases.edit', compact('legal_cases', 'audiences', 'halls', 'stages', 'customers', 'lawyers'));
+        return view('legalCases.edit', compact('legalCases', 'audiences', 'halls', 'stages', 'customers', 'lawyers'));
     }
 
     /**
@@ -79,9 +79,9 @@ class LegalCaseController extends Controller
      */
     public function update(LegalCaseRequest $request, int $id)
     {
-        $legal_cases = Legal_Case::find($id);
-        $legal_cases->update($request->validated());
-        return redirect()->route('legal_cases.index')->with('updated', 'Caso Legal actualizada con éxito.');
+        $legalCases = LegalCase::find($id);
+        $legalCases->update($request->validated());
+        return redirect()->route('legalCases.index')->with('updated', 'Caso Legal actualizada con éxito.');
     }
 
     /**
@@ -89,8 +89,8 @@ class LegalCaseController extends Controller
      */
     public function destroy(int $id)
     {
-        $legal_cases = Legal_Case::find($id);
-        $legal_cases->delete();
-        return redirect()->route('legal_cases.index')->with('deleted', 'Caso Legal eliminida con éxito.');
+        $legalCases = LegalCase::find($id);
+        $legalCases->delete();
+        return redirect()->route('legalCases.index')->with('deleted', 'Caso Legal eliminida con éxito.');
     }
 }
